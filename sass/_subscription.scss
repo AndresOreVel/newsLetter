@@ -1,0 +1,37 @@
+@use 'variables';
+@use 'mixins';
+
+.subscription{
+    display: none;
+    &__img{
+        width: 70px;
+    }
+
+    &__title{
+        font-size: 3.5rem;
+    }
+
+    &__text{
+        line-height: 1.5;
+    }
+}
+
+.subscription.active{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    padding: 2rem;
+    background-color: variables.$white;
+    border-radius: 30px;
+
+    @include mixins.breakpoint-down (mobile){
+        height: 100svh;
+        border-radius: 0;
+        justify-content: space-evenly;
+    }
+}
+
+#user-email{
+    font-weight: 700;
+}

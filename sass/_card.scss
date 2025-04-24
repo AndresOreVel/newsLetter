@@ -1,0 +1,107 @@
+@use 'variables';
+@use 'mixins';
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 285px;
+    max-width: 800px;
+    background-color: variables.$white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin: 0 1rem;
+
+    @include mixins.breakpoint-down (mobile){
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 0 0 1.5rem 0;
+        margin: 0;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    &__img {
+        display: block;
+        max-width: 100%;
+    }
+}
+
+.card.success {
+    display: none;
+}
+
+.card__description {
+    @include flex-column;
+
+    &__title {
+        font-size: 3.5rem;
+    }
+
+    &__list {
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+#form {
+    @include flex-column;
+}
+
+.form__email {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: space-between;
+
+    &__error {
+        display: none;
+    }
+
+    &__input {
+        padding: 1rem 0 1rem 1rem;
+        border-radius: 10px;
+        border: solid variables.$grey 1px;
+    }
+}
+
+.form__email__error.active {
+    display: block;
+    color: variables.$red;
+}
+
+.form__email__input.active {
+    background-color: rgba(255, 98, 87, 0.2);
+    border: 1px solid variables.$red;
+}
+
+button {
+    background-color: variables.$blue800;
+    color: variables.$white;
+    padding: 1rem 0;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+
+    &:hover {
+        background: linear-gradient(127deg, rgba(255, 63, 124, 1) 40%, rgb(229, 40, 15) 70%);
+        cursor: pointer;
+    }
+}
+
+.desktop{
+    @include mixins.breakpoint-down (mobile){
+        display: none;
+    }
+}
+
+.mobile {
+    display: none;
+
+    @include mixins.breakpoint-down (mobile){
+        display: block;
+        margin-bottom: 1.5rem;
+    }
+}
